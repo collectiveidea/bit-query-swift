@@ -15,4 +15,10 @@ let bitMasks: [UInt8] = [
 public func getMask(bitStart: Int, len: Int) -> UInt8 {
     return (bitMasks[len] << bitStart)
 }
+
+public func getUInt8(data: Data, byteIdx: Int, bitStart: Int, len: Int) -> UInt8 {
+    let targetByte = data[byteIdx]
+    let mask = getMask(bitStart: bitStart, len: len)
+    return (mask & targetByte) >> bitStart
+}
 }
