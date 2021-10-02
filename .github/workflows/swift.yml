@@ -13,9 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Lint
-      run: swiftlint
     - name: Build
       run: swift build -v
     - name: Run tests
       run: swift test -v
+    - name: GitHub Action for SwiftLint
+      uses: norio-nomura/action-swiftlint@3.2.1
