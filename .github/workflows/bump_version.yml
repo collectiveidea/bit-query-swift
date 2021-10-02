@@ -34,5 +34,5 @@ jobs:
       with:
         author_name: Chris Rittersdorf
         author_email: chris.rittersdorf@collectiveidea.com
-        message: "Bump version to v${{{ steps.bump_version.outputs.next-version }}}"
+        message: "Bump version to v${{ steps.bump_version.outputs.next-version }}"
         add: "VERSION"
