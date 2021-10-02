@@ -25,4 +25,12 @@ public func getUInt8(data: Data, byteIdx: Int, bitStart: Int, len: Int) -> UInt8
 public func getBool(data: Data, byteIdx: Int, bitStart: Int, len: Int) -> Bool {
     return getUInt8(data: data, byteIdx: byteIdx, bitStart: bitStart, len: len) != 0
 }
+
+public func getPercent(data: Data, byteIdx: Int, bitStart: Int, len: Int, factor: Float) -> Float {
+    return Float(getUInt8(data: data, byteIdx: byteIdx, bitStart: bitStart, len: len)) * factor
+}
+
+public func convertForPercent(value: Float, factor: Float) -> UInt8 {
+    let result = value/factor
+    return UInt8(result)
 }
