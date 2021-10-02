@@ -1,0 +1,16 @@
+name: Bump Version
+
+on:
+  merge:
+    branches: [ main ]
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Bump version
+      uses: remorses/bump-version@js
+      with:
+          version_file: ./VERSION
+          prefix: v
+          github_token: ${{ secrets.GITHUB_TOKEN }}
