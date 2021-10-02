@@ -2,10 +2,30 @@ name: Bump Version
 
 on:
   push:
-    branches: [ main ]
+    branches: [ develop ]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: GitHub Action for SwiftLint
+      uses: norio-nomura/action-swiftlint@3.2.1
+      with:
+          args: --strict
+
+  test:
+    runs-on: macos-latest
+    needs: [lint]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
+
   bump-version:
+    needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

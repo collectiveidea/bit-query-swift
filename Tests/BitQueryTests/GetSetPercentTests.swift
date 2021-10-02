@@ -26,8 +26,7 @@ final class GetSetPercentTests: XCTestCase {
            250
        )
     }
-// TODO: Implement set functions from the Python spec
-//
+
 //    def test_set_percent_full_byte(self):
 //       data = bytearray(1)
 //       set_percent(data, 125.0, 0, 0, 8, 0.5)
