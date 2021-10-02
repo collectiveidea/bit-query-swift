@@ -9,11 +9,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Bump version
-      uses: remorses/bump-version@js
+
+    - name: Get Current Version
+      id: get_current_version
+      run: echo "::set-output name=current-version::$(cat ./VERSION)"
+      shell: bash
+
+    - name: Bump release version
+      id: bump_version
+      uses: christian-draeger/increment-semantic-version@1.0.2
       with:
-        version_file: ./VERSION
-        prefix: v
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        current-version: ${{ steps.get_current_version.outputs.current-version }}
+        version-fragment: 'bug'
+
+    - name: Write New Version
+      run: echo "${{ steps.bump_version.outputs.next-version }}" > ./VERSION
+      shell: bash
+
+    - name: Check Version File
+      run: cat ./VERSION
+
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v7
+      with:
+        author_name: Chris Rittersdorf
+        author_email: chris.rittersdorf@collectiveidea.com
+        message: "Bump version to v${{{ steps.bump_version.outputs.next-version }}}"
+        add: "VERSION"
