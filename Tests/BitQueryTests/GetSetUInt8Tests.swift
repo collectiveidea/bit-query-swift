@@ -1,20 +1,11 @@
-//
-//  File.swift
-//  
-//
-//  Created by Chris Rittersdorf on 10/1/21.
-//
-
 import Foundation
-
-
 import XCTest
 @testable import BitQuery
 
 final class GetSetUInt8Tests: XCTestCase {
     let data = Data([0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x55, 0xFF, 0b10000000])
 
-    func testGetIntWholeByte(){
+    func testGetIntWholeByte() {
         XCTAssertEqual(getUInt8(data: self.data, byteIdx: 1, bitStart: 0, len: 8), 1)
         XCTAssertEqual(getUInt8(data: self.data, byteIdx: 2, bitStart: 0, len: 8), 2)
         XCTAssertEqual(getUInt8(data: self.data, byteIdx: 7, bitStart: 0, len: 8), 255)
