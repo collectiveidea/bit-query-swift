@@ -21,4 +21,8 @@ public func getUInt8(data: Data, byteIdx: Int, bitStart: Int, len: Int) -> UInt8
     let mask = getMask(bitStart: bitStart, len: len)
     return (mask & targetByte) >> bitStart
 }
+
+public func getBool(data: Data, byteIdx: Int, bitStart: Int, len: Int) -> Bool {
+    return getUInt8(data: data, byteIdx: byteIdx, bitStart: bitStart, len: len) != 0
+}
 }
