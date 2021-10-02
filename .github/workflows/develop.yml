@@ -16,7 +16,6 @@ jobs:
 
   test:
     runs-on: macos-latest
-    needs: [lint]
     steps:
     - uses: actions/checkout@v2
     - name: Build
@@ -25,7 +24,7 @@ jobs:
       run: swift test -v
 
   bump-version:
-    needs: [test]
+    needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

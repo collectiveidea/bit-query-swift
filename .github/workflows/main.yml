@@ -24,7 +24,7 @@ jobs:
       run: swift test -v
 
   release:
-    needs: [test]
+    needs: [test, lint]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
