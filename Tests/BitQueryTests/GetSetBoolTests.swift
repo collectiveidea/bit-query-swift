@@ -20,7 +20,7 @@ final class GetSetBoolTests: XCTestCase {
         XCTAssertEqual(getBool(data: self.data, byteIdx: 5, bitStart: 3, len: 2), false)
         XCTAssertEqual(getBool(data: self.data, byteIdx: 5, bitStart: 2, len: 2), true)
     }
-    
+
 // TODO: Implement set functions from the Python spec
 //    def test_set_bool_whole_byte(self):
 //        data = bytearray([0x00, 0x00])
