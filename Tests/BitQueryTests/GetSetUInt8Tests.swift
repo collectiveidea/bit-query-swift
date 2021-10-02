@@ -19,7 +19,6 @@ final class GetSetUInt8Tests: XCTestCase {
         XCTAssertEqual(getUInt8(data: self.data, byteIdx: 7, bitStart: 0, len: 8), 255)
     }
 
-// TODO: Implement set functions from the Python spec
 //    def test_set_int_whole_byte_of_zeros(self):
 //        data = bytearray(8)
 //        set_int(data, 255, 0, 0, 8)
