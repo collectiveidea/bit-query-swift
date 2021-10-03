@@ -1,5 +1,8 @@
-name-template: 'v$RESOLVED_VERSION 🌈'
+name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
+references:
+  - main
+  - v.+
 categories:
   - title: '🚀 Features'
     labels:
